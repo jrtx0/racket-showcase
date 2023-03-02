@@ -1,0 +1,1 @@
+("8.2" ta6nt ("3e9e44f9e9793bbcee37d71b9c76c9507fb51505" . "1a3889cc36bf945041f06c3c632e4d2573285ae9") (collects #"errortrace" #"errortrace-key.rkt") (collects #"pict" #"flash.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"slideshow" #"main.rkt"))
