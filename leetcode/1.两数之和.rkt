@@ -4,10 +4,10 @@
   (-> (listof exact-integer?) exact-integer? (listof exact-integer?))
   (define table (make-hash))
   (for/last ([i (in-naturals)]
-        [num (in-list nums)]
-        #:final (hash-has-key? table (- target num)))
+             [num (in-list nums)]
+             #:final (hash-has-key? table (- target num)))
     (when (not (hash-has-key? table num))
-        (hash-set! table num i))
+      (hash-set! table num i))
     (list (hash-ref table (- target num) '()) i))
   )
 
