@@ -23,4 +23,4 @@
  (save-image (image-to-box filename (string->number width))
              (normalize-name filename width)))
 
-;(image-to-box1 perfect-woman 400)
+(image-to-box women 400)
