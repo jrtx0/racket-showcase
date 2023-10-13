@@ -31,7 +31,6 @@
         (list (hash-ref h (car l)) i)
         (iter (cdr l) (hash-set h (- target (car l)) i) (add1 i)))))
 
-
 (two-sum (list 2 7 11 15) 9)
 (two-sum (list 3 2 4) 6)
 (two-sum (list 3 3) 6)
