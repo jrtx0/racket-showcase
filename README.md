@@ -1,5 +1,5 @@
 # racket-showcase
-personal racket code showcase
+racket code showcase
 
 ## 2048
 2048 game
