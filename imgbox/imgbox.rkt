@@ -6,6 +6,7 @@
 
 (define women (read-bitmap "face.jpg"))
 
+
 (define (image-to-box img/file width)
   (define (f x y) (/ (-  x y) 2))
   (let*-values ([(img) (if (string? img/file) (read-bitmap img/file) img/file)]
@@ -18,9 +19,13 @@
 (define (normalize-name filename width)
   (string-replace filename "." (format "-~a." width)))
 
+(image-to-box women 300)
+
+;; run from command line, racket face.rkt face.jpg 400
 (command-line
  #:args (filename width)
  (save-image (image-to-box filename (string->number width))
              (normalize-name filename width)))
 
-(image-to-box women 400)
+
+
