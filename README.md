@@ -12,3 +12,6 @@ leetcode solution in racket
 
 ## recursive
 factorial and fibonacci in recursion
+
+## quick
+Quick: An Introduction to Racket with Pictures
