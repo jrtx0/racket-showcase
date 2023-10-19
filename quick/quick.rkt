@@ -1,16 +1,19 @@
 #lang slideshow
 
+;;------------------------------
+;; Go!
+;;------------------------------
 ; 5
 ; "art gallery"
-
 ; (cirlce 10)
-
 ; (rectangle 10 20)
-
 ; (circle 10 20)
-
 ; (hc-append (circle 10) (rectangle 10 20))
 
+
+;;------------------------------
+;; Definitions
+;;------------------------------
 (define c (circle 10))
 (define r (rectangle 10 20))
 
@@ -24,6 +27,11 @@
   (filled-rectangle n n))
 
 ; (square 10)
+
+
+;;------------------------------
+;; Local Binding
+;;------------------------------
 
 (define (four p)
   (define two-p (hc-append p p))
@@ -48,6 +56,11 @@
 
 ; (checkerboard (square 10))
 
+
+;;------------------------------
+;; Functions are values
+;;------------------------------
+
 ; circle
 
 (define (series mk)
@@ -55,7 +68,6 @@
 
 ; (series circle)
 ; (series square)
-
 ; (series (lambda (size) (checkerboard (square size))))
 
 #|
@@ -63,6 +75,11 @@
   (lambda (mk)
     (hc-append 4 (mk 5) (mk 10) (mk 20))))
 |#
+
+
+;;------------------------------
+;; Lexical Scope
+;;------------------------------
 
 (define (rgb-series mk)
   (vc-append
@@ -82,8 +99,12 @@
 ; (series (rgb-maker circle))
 ; (series (rgb-maker square))
 
-; (list "red" "green" "blue")
 
+;;------------------------------
+;; Lists
+;;------------------------------
+
+; (list "red" "green" "blue")
 ; (list (circle 10) (square 10))
 
 (define (rainbow p)
@@ -102,10 +123,13 @@
 (provide rainbow square)
 
 
+;;------------------------------
+;; Macros
+;;------------------------------
 
 (require slideshow/code)
 
-(code (circle 10))
+; (code (circle 10))
 
 (define-syntax pict+code
   (syntax-rules ()
@@ -114,7 +138,12 @@
                 expr
                 (code expr))]))
 
-(pict+code (circle 10))
+; (pict+code (circle 10))
+
+
+;;------------------------------
+;; Objects
+;;------------------------------
 
 (require racket/class
          racket/gui/base)
@@ -124,7 +153,7 @@
                [height 300]
                [alignment '(center center)]))
 
-(send f show #t)
+; (send f show #t)
 
 (define (add-drawing p)
   (let ([drawer (make-pict-drawer p)])
@@ -134,9 +163,8 @@
                            (drawer dc 0 0))])))
 
 
-(add-drawing (pict+code (circle 10)))
-
-(add-drawing (colorize (filled-flash 50 30) "yellow"))
+; (add-drawing (pict+code (circle 10)))
+; (add-drawing (colorize (filled-flash 50 30) "yellow"))
 
 
 
