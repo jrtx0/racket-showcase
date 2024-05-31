@@ -27,3 +27,6 @@ web development in racket
 
 ## racket-weekend
 racket-weekend books code in racket
+
+## check-covid-19
+check covid-19 code in racket
