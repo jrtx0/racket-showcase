@@ -116,13 +116,12 @@
 ;; 乏力伴随咳嗽（干咳）或者发热，需要成倍增加风险值
 ;; 乏力伴随严重腹泻，而没有这里列举的其它症状，需要降低风险值
 (let ((FA_LI (have_attribute_inResult Ctx_Attributes "乏力")))
-  (when (and (not (null?  FA_LI))
-             (not (equal? "无" (car (cdr FA_LI)))))
+  (when (and (not (null?  FA_LI)) (not (equal? "无" (car (cdr FA_LI)))))
     (begin
       (display "有乏力症状，需要综合考虑其它症状计算风险...")(newline)
-      (let (  (KE_SOU (have_attribute_inResult Ctx_Attributes "咳嗽"))
-              (FA_RE (have_attribute_inResult Ctx_Attributes "发热"))
-              (HU_XI (have_attribute_inResult Ctx_Attributes "呼吸困难")))
+      (let ((KE_SOU (have_attribute_inResult Ctx_Attributes "咳嗽"))
+            (FA_RE (have_attribute_inResult Ctx_Attributes "发热"))
+            (HU_XI (have_attribute_inResult Ctx_Attributes "呼吸困难")))
         (if (and (null? KE_SOU) (null? FA_RE) (null? HU_XI))
             (begin
               (display "单纯性发热，调低风险值。")(newline)
@@ -130,9 +129,9 @@
             (begin
               ;测试是否有严重腹泻并且没有咳嗽
               (let ((FU_XIE (have_attribute_inResult Ctx_Attributes "腹泻")))
-                (if (and    (not (null? FU_XIE)) 
-                            (equal? "明显" (car (cdr FU_XIE))) 
-                            (null? KE_SOU))
+                (if (and (not (null? FU_XIE)) 
+                         (equal? "明显" (car (cdr FU_XIE))) 
+                         (null? KE_SOU))
                     (set! Total_Risk 0) ;为严重腹泻引起的乏力,不会是新冠感染。
                     (begin
                       (display "乏力伴随咳嗽或者发热，调高风险值。")(newline)
@@ -173,10 +172,10 @@
 (newline)
 
 (set! Total_Risk (+ Total_Risk 
-    (case (input_selected)
-        ((0 2) 0)
-        ((1) 50)
-        (else 0))))
+                    (case (input_selected)
+                      ((0 2) 0)
+                      ((1) 50)
+                      (else 0))))
 
 (newline)
 (display "4）最近14天，您是否与与确诊患者密接者有接触？（0-否，1-是，2-不清楚）")

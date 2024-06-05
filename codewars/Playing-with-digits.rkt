@@ -21,4 +21,4 @@
      (let ([s (for/sum ([i (in-naturals p)]
                         [digit (in-string (number->string n))])
                 (expt (string->number (string digit)) i))])
-    (if (zero? (modulo s n)) (/ s n) -1))) |#
+    (if (zero? (modulo s n)) (/ s n) -1))) |#()
