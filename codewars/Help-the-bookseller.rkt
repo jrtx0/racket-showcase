@@ -2,13 +2,6 @@
 
 (provide stock-list)
 
-(define ur1 '("BBAR 150" "CDXE 515" "BKWR 250" "BTSQ 890" "DRTY 600"))
-;(define ur1 '())
-
-(define vr1 '("A" "B" "C" "D"))
-;(define vr5 '("B" "R" "D" "X"))
-
-
 (define (stock-list list-of-books list-of-cat)
   (if (or (null? list-of-books) (null? list-of-cat))
       '()
@@ -22,3 +15,19 @@
                           (lambda (val) (+ val (string->number (list-ref (string-split book) 1)))))))
         (for/list ([cat list-of-cat])
           (cons cat (hash-ref h cat))))))
+
+
+#| (define (stock-list list-of-books list-of-cat)
+     (if (null? list-of-books)
+         null
+         (map
+          (lambda (cat)
+            (cons cat
+                  (apply +
+                         (map (lambda (book)
+                                (match-define (list name count) (string-split book))
+                                (if (string-prefix? name cat)
+                                    (string->number count)
+                                    0))
+                              list-of-books))))
+       list-of-cat))) |#
